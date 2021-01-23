@@ -3,7 +3,7 @@ import time
 import os 
 import random 
 
-LINE_LEN = 60
+LINE_LEN = 45
 SLEEP_TIME = 0.25
 
 clear = lambda: os.system('clear')
@@ -144,15 +144,32 @@ def oneline_breeder(v, h, board):
 
 
 def main():
+    generation = 1
     # origin_board = initialize_board([])
     origin_board = all_false_board([])
 
-    # origin_board = grider(0, 0, origin_board)
+    origin_board = grider(0, 0, origin_board)
+    origin_board = grider(5, 4, origin_board)
+    origin_board = grider(10, 10, origin_board)
+    origin_board = grider(10, 10, origin_board)
+    origin_board = grider(20, 10, origin_board)
+    origin_board = grider(30, 1, origin_board)
 
-    # origin_board = galaxy(5, 5, origin_board)
+    origin_board = galaxy(1, 5, origin_board)
+    origin_board = galaxy(4, 0, origin_board)
+    origin_board = galaxy(5, 10, origin_board)
+    origin_board = grider(8, 24, origin_board)
+    origin_board = grider(9, 14, origin_board)
+    origin_board = grider(15, 24, origin_board)
+    origin_board = galaxy(7, 2, origin_board)
+    origin_board = galaxy(9, 10, origin_board)
+    origin_board = galaxy(10, 5, origin_board)
+    origin_board = galaxy(13, 15, origin_board)
+    origin_board = galaxy(15, 15, origin_board)
+    origin_board = galaxy(11, 15, origin_board)
+    origin_board = galaxy(18, 12, origin_board)
+    origin_board = galaxy(13, 5, origin_board)
     
-    origin_board = oneline_breeder(35, 10, origin_board)
-
     display_board(origin_board)
 
 
@@ -162,6 +179,9 @@ def main():
         origin_board = calc_board(origin_board)
 
         time.sleep(SLEEP_TIME)
+
+        generation +=1
+        print("generation: " + str(generation))
         clear()
 
 

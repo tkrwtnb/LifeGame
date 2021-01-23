@@ -71,9 +71,7 @@ def count_cell(target_cell_v, target_cell_h, count_board):
 
     return count
 
-
-if __name__ == '__main__':
-
+def main():
     origin_board = initialize_board([])
 
     display_board(origin_board)
@@ -91,3 +89,7 @@ if __name__ == '__main__':
 
         time.sleep(0.5)
         clear()
+
+
+if __name__ == '__main__':
+    main()

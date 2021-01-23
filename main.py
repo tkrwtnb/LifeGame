@@ -3,7 +3,7 @@ import time
 import os 
 import random 
 
-LINE_LEN = 30
+LINE_LEN = 60
 SLEEP_TIME = 0.25
 
 clear = lambda: os.system('clear')
@@ -119,15 +119,39 @@ def blinker(v, h, board):
 
     return board
 
+def oneline_breeder(v, h, board):
+    offset = 0
+    for i in range(h, h + 8):
+        board[v][i] = True
+    
+    offset += 8
+    for i in range(offset + h, offset + h + 5):
+        board[v][i] = True
+
+    offset += 8
+    for i in range(offset + h, offset + h + 3):
+        board[v][i] = True
+
+    offset += 9
+    for i in range(offset + h, offset + h + 7):
+        board[v][i] = True
+    
+    offset += 8
+    for i in range(offset + h, offset + h + 5):
+        board[v][i] = True
+
+    return board
+
 
 def main():
     # origin_board = initialize_board([])
     origin_board = all_false_board([])
 
-    origin_board = grider(0, 0, origin_board)
+    # origin_board = grider(0, 0, origin_board)
 
-    origin_board = galaxy(5, 5, origin_board)
+    # origin_board = galaxy(5, 5, origin_board)
     
+    origin_board = oneline_breeder(35, 10, origin_board)
 
     display_board(origin_board)
 

@@ -3,7 +3,7 @@ import time
 import os 
 import random 
 
-LINE_LEN = 45
+LINE_LEN = 60 
 SLEEP_TIME = 0.25
 
 clear = lambda: os.system('clear')
@@ -18,7 +18,7 @@ def display_board(board):
                 if not line[i]:
                     print("\u25A0", end="")
                 else:
-                    print(" ", end="")
+                    print("\u00A0", end="")
             else:
                 if not line[i]:
                     print("\u25A0")
@@ -142,35 +142,39 @@ def oneline_breeder(v, h, board):
 
     return board
 
+def five_square_breeding_type(v, h, board):
+    for i in range(h, h + 5):
+        if i != h + 3:
+            board[v][i] = True
+            
+    board[v + 1][h] = True
+
+    board[v + 2][h + 3] = True
+    board[v + 2][h + 4] = True
+
+    for i in range(h, h + 5):
+        if i != h + 0 and i != h + 3:
+            board[v + 3][i] = True
+            ic(i)
+
+    for i in range(h, h + 5):
+        if i != h + 1 and i != h + 3:
+            board[v + 4][i] = True
+    
+    return board
+
+    
+
 
 def main():
     generation = 1
     # origin_board = initialize_board([])
     origin_board = all_false_board([])
 
-    origin_board = grider(0, 0, origin_board)
-    origin_board = grider(5, 4, origin_board)
-    origin_board = grider(10, 10, origin_board)
-    origin_board = grider(10, 10, origin_board)
-    origin_board = grider(20, 10, origin_board)
-    origin_board = grider(30, 1, origin_board)
+    origin_board = five_square_breeding_type(25, 25, origin_board)
 
-    origin_board = galaxy(1, 5, origin_board)
-    origin_board = galaxy(4, 0, origin_board)
-    origin_board = galaxy(5, 10, origin_board)
-    origin_board = grider(8, 24, origin_board)
-    origin_board = grider(9, 14, origin_board)
-    origin_board = grider(15, 24, origin_board)
-    origin_board = galaxy(7, 2, origin_board)
-    origin_board = galaxy(9, 10, origin_board)
-    origin_board = galaxy(10, 5, origin_board)
-    origin_board = galaxy(13, 15, origin_board)
-    origin_board = galaxy(15, 15, origin_board)
-    origin_board = galaxy(11, 15, origin_board)
-    origin_board = galaxy(18, 12, origin_board)
-    origin_board = galaxy(13, 5, origin_board)
-    
     display_board(origin_board)
+    # time.sleep(SLEEP_TIME + 500000)
 
 
     while True:
